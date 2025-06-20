@@ -2,26 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:serenimind/screens/audio_player/audio_player_screen.dart';
 import 'package:serenimind/screens/category/category_screen.dart';
 import 'package:serenimind/screens/home/home_screen.dart';
+import 'package:serenimind/screens/onboarding/notifications_screen.dart';
 import 'package:serenimind/screens/onboarding/onboarding_screen.dart';
 import 'package:serenimind/screens/profile/profile_screen.dart';
 import 'package:serenimind/screens/session_detail/session_detail.dart';
 import 'package:serenimind/screens/auth/sign_in_sign_up_screen.dart';
+import 'package:serenimind/screens/splash_screen.dart';
 
 class AppRouter {
-  static const String onboarding = '/';
+  static const String splash = '/';
+  static const String onboarding= '/onboarding';
   static const String home = '/home';
   static const String category = '/category';
   static const String sessionDetail = '/session-detail';
   static const String audioPlayer = '/audio-player';
   static const String profile = '/profile';
   static const String signInSignUp = '/sign-in-sign-up';
+  static const String notification = '/notification';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case splash:
+        return _slideRoute(SplashScreen(), settings);
       case onboarding:
         return _slideRoute(OnboardingScreen(), settings);
       case signInSignUp:
         return _slideRoute(const SignInSignUpScreen(), settings);
+      case notification:
+        return _slideRoute(const NotificationsScreen(), settings);
       case home:
         return _slideRoute(HomeScreen(), settings);
       case category:
