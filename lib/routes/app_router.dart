@@ -5,6 +5,7 @@ import 'package:serenimind/screens/home/home_screen.dart';
 import 'package:serenimind/screens/onboarding/onboarding_screen.dart';
 import 'package:serenimind/screens/profile/profile_screen.dart';
 import 'package:serenimind/screens/session_detail/session_detail.dart';
+import 'package:serenimind/screens/auth/sign_in_sign_up_screen.dart';
 
 class AppRouter {
   static const String onboarding = '/';
@@ -13,13 +14,16 @@ class AppRouter {
   static const String sessionDetail = '/session-detail';
   static const String audioPlayer = '/audio-player';
   static const String profile = '/profile';
+  static const String signInSignUp = '/sign-in-sign-up';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case onboarding:
-        return _slideRoute(const OnboardingScreen(), settings);
+        return _slideRoute(OnboardingScreen(), settings);
+      case signInSignUp:
+        return _slideRoute(const SignInSignUpScreen(), settings);
       case home:
-        return _slideRoute(const HomeScreen(), settings);
+        return _slideRoute(HomeScreen(), settings);
       case category:
         return _slideRoute(
           CategoryScreen(category: settings.arguments as String),
@@ -36,9 +40,12 @@ class AppRouter {
         return _slideRoute(const ProfileScreen(), settings);
       default:
         return MaterialPageRoute(
-          builder: (_) => Scaffold(
-            body: Center(child: Text('No route defined for ${settings.name}')),
-          ),
+          builder:
+              (_) => Scaffold(
+                body: Center(
+                  child: Text('No route defined for ${settings.name}'),
+                ),
+              ),
         );
     }
   }
